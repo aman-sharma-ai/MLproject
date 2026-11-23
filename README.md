@@ -1,6 +1,6 @@
-# 🎓 End-to-End ML: Student Performance Prediction
+# Student Performance Prediction: An End-to-End Machine Learning Project
 
-Predicting a student's **math score** from demographic and study-preparation data, comparing 9 regression models. The repo also includes a real-time **driver drowsiness detector** built with computer vision.
+This project predicts a student's **mathematics score** from demographic and test-preparation data and compares the performance of nine regression models. The repository also includes a real-time **driver drowsiness detection** system built with computer vision.
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
 ![Scikit-learn](https://img.shields.io/badge/Scikit--learn-F7931E?style=flat-square&logo=scikitlearn&logoColor=white)
@@ -10,28 +10,28 @@ Predicting a student's **math score** from demographic and study-preparation dat
 
 ---
 
-## 📌 Problem
+## Problem Statement
 
-How much do gender, ethnicity group, parental education, lunch type and test-preparation course affect a student's math score? Can we predict it from those factors plus reading and writing scores?
+To what extent do gender, ethnicity group, parental level of education, lunch type and completion of a test-preparation course influence a student's mathematics score? Can that score be predicted reliably from these factors together with reading and writing scores?
 
-## 📂 What's inside
+## Repository Contents
 
 | Path | Description |
 |---|---|
-| [`notebook/1 . EDA STUDENT PERFORMANCE .ipynb`](notebook/) | Data checks, distributions and how each factor relates to scores |
-| [`notebook/2. MODEL TRAINING.ipynb`](notebook/) | Preprocessing, training and evaluating 9 regression models |
-| [`src/`](src/) | Modular pipeline: logging and custom exceptions done; ingestion, transformation and training components in progress |
-| [`Drowsiness_Detection.py`](Drowsiness_Detection.py) | Real-time drowsiness and yawn detection from a webcam |
+| [`notebook/1 . EDA STUDENT PERFORMANCE .ipynb`](notebook/) | Data validation, distribution analysis and the relationship between each factor and student scores |
+| [`notebook/2. MODEL TRAINING.ipynb`](notebook/) | Preprocessing, training and evaluation of nine regression models |
+| [`src/`](src/) | Modular training pipeline. Logging and custom exception handling are complete; the ingestion, transformation and training components are under development. |
+| [`Drowsiness_Detection.py`](Drowsiness_Detection.py) | Real-time drowsiness and yawn detection using a webcam |
 
-## 📈 Results
+## Results
 
-Test-set R² for every model compared:
+Test-set R² for each model evaluated:
 
 | Rank | Model | R² |
 |---:|---|---:|
-| 🥇 | Ridge | **0.881** |
-| 🥈 | Linear Regression | 0.880 |
-| 🥉 | CatBoost | 0.852 |
+| 1 | Ridge | **0.881** |
+| 2 | Linear Regression | 0.880 |
+| 3 | CatBoost | 0.852 |
 | 4 | AdaBoost | 0.852 |
 | 5 | Random Forest | 0.849 |
 | 6 | XGBoost | 0.828 |
@@ -39,15 +39,15 @@ Test-set R² for every model compared:
 | 8 | K-Nearest Neighbors | 0.784 |
 | 9 | Decision Tree | 0.735 |
 
-**Takeaway:** the relationship is mostly linear, so simple regularised linear models beat the tree ensembles. Linear Regression reaches **RMSE ≈ 5.4** and **MAE ≈ 4.2** marks on the test set.
+**Conclusion:** The relationship between the features and the target is largely linear, so regularized linear models outperform the tree-based ensembles. Linear Regression achieves an **RMSE of approximately 5.4** and an **MAE of approximately 4.2** marks on the test set.
 
-## 😴 Drowsiness detection
+## Drowsiness Detection
 
-Uses **dlib's 68-point facial landmarks** to compute the **eye aspect ratio** and **mouth aspect ratio** every frame. If the eyes stay closed (EAR < 0.25) or the driver yawns (MAR > 0.75) for **20 consecutive frames**, an alarm sounds.
+The system uses **dlib's 68-point facial landmark model** to calculate the **eye aspect ratio (EAR)** and **mouth aspect ratio (MAR)** for each video frame. An alarm is triggered when the eyes remain closed (EAR below 0.25) or the driver yawns (MAR above 0.75) for **20 consecutive frames**.
 
-Before running it, download [`shape_predictor_68_face_landmarks.dat`](http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2) into a `models/` folder and add an alarm sound named `music.wav`.
+Before running the script, download [`shape_predictor_68_face_landmarks.dat`](http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2) into a `models/` directory and provide an alarm audio file named `music.wav`.
 
-## ▶️ Run it locally
+## Running Locally
 
 ```bash
 git clone https://github.com/AmanDataverse/MLproject.git
@@ -55,13 +55,13 @@ cd MLproject
 pip install -r requirements.txt
 jupyter notebook            # open the notebooks in /notebook
 
-# drowsiness detector (extra dependencies)
+# Drowsiness detection (additional dependencies)
 pip install opencv-python dlib imutils pygame scipy
 python Drowsiness_Detection.py
 ```
 
-## 🗺️ Roadmap
+## Roadmap
 
-- [ ] Finish the `src/` pipeline (ingestion → transformation → training → prediction)
-- [ ] Add a Flask or Streamlit app for live predictions
-- [ ] Deploy and add a demo link here
+- [ ] Complete the `src/` pipeline (ingestion, transformation, training and prediction)
+- [ ] Add a Flask or Streamlit application for live predictions
+- [ ] Deploy the application and publish a demonstration link
