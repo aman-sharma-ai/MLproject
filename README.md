@@ -50,7 +50,7 @@ Before running the script, download [`shape_predictor_68_face_landmarks.dat`](ht
 ## Running Locally
 
 ```bash
-git clone https://github.com/AmanDataverse/MLproject.git
+git clone https://github.com/aman-sharma-ai/MLproject.git
 cd MLproject
 pip install -r requirements.txt
 jupyter notebook            # open the notebooks in /notebook
